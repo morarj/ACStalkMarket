@@ -177,10 +177,16 @@
     <Compile Include="Migrations\201611062017033_InitialMigration.Designer.cs">
       <DependentUpon>201611062017033_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611070426434_AddPeopleAndGender.cs" />
+    <Compile Include="Migrations\201611070426434_AddPeopleAndGender.Designer.cs">
+      <DependentUpon>201611070426434_AddPeopleAndGender.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\People.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -258,6 +264,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201611062017033_InitialMigration.resx">
       <DependentUpon>201611062017033_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611070426434_AddPeopleAndGender.resx">
+      <DependentUpon>201611070426434_AddPeopleAndGender.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
