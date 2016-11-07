@@ -181,6 +181,10 @@
     <Compile Include="Migrations\201611070426434_AddPeopleAndGender.Designer.cs">
       <DependentUpon>201611070426434_AddPeopleAndGender.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611070430530_PopulateGenders.cs" />
+    <Compile Include="Migrations\201611070430530_PopulateGenders.Designer.cs">
+      <DependentUpon>201611070430530_PopulateGenders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Gender.cs" />
@@ -267,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611070426434_AddPeopleAndGender.resx">
       <DependentUpon>201611070426434_AddPeopleAndGender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611070430530_PopulateGenders.resx">
+      <DependentUpon>201611070430530_PopulateGenders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
