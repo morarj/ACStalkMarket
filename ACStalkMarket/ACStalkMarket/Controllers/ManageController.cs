@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ACStalkMarket.Models;
+using ACStalkMarket.Extensions;
+using System.Data.Entity.Validation;
 
 namespace ACStalkMarket.Controllers
 {
@@ -15,9 +17,11 @@ namespace ACStalkMarket.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public ManageController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -61,11 +65,23 @@ namespace ACStalkMarket.Controllers
                 : message == ManageMessageId.Error ? "Se ha producido un error."
                 : message == ManageMessageId.AddPhoneSuccess ? "Se ha agregado su número de teléfono."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Se ha quitado su número de teléfono."
+                : message == ManageMessageId.UpdatePersonSuccess ? "Se ha actualizado correctamente."
                 : "";
 
             var userId = User.Identity.GetUserId();
+            // Custom
+            var personId = Convert.ToInt32(User.Identity.GetPeopleId());
+            var person = _context.People.SingleOrDefault(c => c.Id == personId);
+            //////////
             var model = new IndexViewModel
             {
+                // Custom
+                PeopleId = personId,
+                Name = person.Name,
+                GenderId = person.GenderId,
+                BirthDate = person.BirthDate,
+                Genders = _context.Genders.ToList(),
+                /////////
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
@@ -74,6 +90,37 @@ namespace ACStalkMarket.Controllers
             };
             return View(model);
         }
+
+        // Custom
+        // POST: /Manage/Edit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(IndexViewModel indexViewModel)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index", new { Message = ManageMessageId.Error });
+
+            ManageMessageId? message;
+            var personInDB = _context.People.Single(c => c.Id == indexViewModel.PeopleId);
+
+            personInDB.Name = indexViewModel.Name;
+            personInDB.GenderId = indexViewModel.GenderId;
+            personInDB.BirthDate = indexViewModel.BirthDate;
+
+            try
+            {
+                _context.SaveChanges();
+                message = ManageMessageId.UpdatePersonSuccess;
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+                message = ManageMessageId.Error;
+            }
+
+            return RedirectToAction("Index", new { Message = message });
+        }
+        //////////
 
         //
         // POST: /Manage/RemoveLogin
@@ -381,6 +428,7 @@ namespace ACStalkMarket.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            UpdatePersonSuccess,
             Error
         }
 

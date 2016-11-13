@@ -14,8 +14,10 @@ namespace ACStalkMarket.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
 
-        // Custom - Add Claims
-/*      public IEnumerable<Gender> Genders { get; set; }
+        // Custom
+        [Required]
+        public int PeopleId { get; set; }
+        public IEnumerable<Gender> Genders { get; set; }
         [Required]
         [StringLength(255)]
         [Display(Name = "Nombre")]
@@ -29,7 +31,6 @@ namespace ACStalkMarket.Models
         [Required]
         [Display(Name = "Género")]
         public short GenderId { get; set; }
-*/
     }
 
     public class ManageLoginsViewModel

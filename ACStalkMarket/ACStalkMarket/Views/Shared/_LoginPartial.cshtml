@@ -7,8 +7,6 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-        //var personId = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId()).PeopleId;
-        //
         var personId = Convert.ToInt32(User.Identity.GetPeopleId());
         var user = new ApplicationDbContext().People.SingleOrDefault(c => c.Id == personId);
     @Html.AntiForgeryToken()
