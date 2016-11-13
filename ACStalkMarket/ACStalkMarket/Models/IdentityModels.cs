@@ -19,6 +19,7 @@ namespace ACStalkMarket.Models
             // Tenga en cuenta que el valor de authenticationType debe coincidir con el definido en CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Agregar aquí notificaciones personalizadas de usuario
+            userIdentity.AddClaim(new Claim("PeopleId", PeopleId.ToString()));
             return userIdentity;
         }
     }

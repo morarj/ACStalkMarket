@@ -1,17 +1,21 @@
 ﻿@using Microsoft.AspNet.Identity
-@using Microsoft.AspNet.Identity.Owin
+@using ACStalkMarket.Extensions
+@using System.Web.Mvc
 @using ACStalkMarket.Models
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         //var personId = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId()).PeopleId;
-        //var user = new ApplicationDbContext().People.SingleOrDefault(c => c.Id == personId);
+        //
+        var personId = Convert.ToInt32(User.Identity.GetPeopleId());
+        var user = new ApplicationDbContext().People.SingleOrDefault(c => c.Id == personId);
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Hola " + user.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
     </ul>

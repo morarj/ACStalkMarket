@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -12,6 +13,23 @@ namespace ACStalkMarket.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+
+        // Custom - Add Claims
+/*      public IEnumerable<Gender> Genders { get; set; }
+        [Required]
+        [StringLength(255)]
+        [Display(Name = "Nombre")]
+        [RegularExpression("^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "Nombre no válido.")]
+        public string Name { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha de Nacimiento")]
+        public DateTime? BirthDate { get; set; }
+
+        [Required]
+        [Display(Name = "Género")]
+        public short GenderId { get; set; }
+*/
     }
 
     public class ManageLoginsViewModel
