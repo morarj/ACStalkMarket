@@ -17,9 +17,11 @@ namespace ACStalkMarket.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context;
 
         public AccountController()
         {
+            _context = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,7 +141,12 @@ namespace ACStalkMarket.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            var viewModel = new RegisterViewModel()
+            {
+                BirthDate = DateTime.Today,
+                Genders = _context.Genders.ToList()
+            };
+            return View(viewModel);
         }
 
         //
@@ -151,7 +158,16 @@ namespace ACStalkMarket.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var person = new People()
+                {
+                    Name = model.Name.ToUpper(),
+                    BirthDate = model.BirthDate,
+                    GenderId = model.GenderId
+                };
+                _context.People.Add(person);
+                _context.SaveChanges();
+
+                var user = new ApplicationUser { PeopleId = person.Id, UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

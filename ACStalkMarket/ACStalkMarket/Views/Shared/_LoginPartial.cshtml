@@ -1,8 +1,12 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin
+@using ACStalkMarket.Models
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
+        //var personId = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(User.Identity.GetUserId()).PeopleId;
+        //var user = new ApplicationDbContext().People.SingleOrDefault(c => c.Id == personId);
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">

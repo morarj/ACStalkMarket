@@ -13,7 +13,7 @@ namespace ACStalkMarket.Models
         [Required]
         [StringLength(255)]
         [Display(Name = "Nombre")]
-        [RegularExpression("")]
+        [RegularExpression("^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "Nombre no válido.")]
         public string Name { get; set; }
 
         [DataType(DataType.Date)]

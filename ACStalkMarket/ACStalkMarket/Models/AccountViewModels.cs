@@ -65,6 +65,22 @@ namespace ACStalkMarket.Models
 
     public class RegisterViewModel
     {
+        public IEnumerable<Gender> Genders { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        [Display(Name = "Nombre")]
+        [RegularExpression("^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "Nombre no válido.")]
+        public string Name { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha de Nacimiento")]
+        public DateTime? BirthDate { get; set; }
+
+        [Required]
+        [Display(Name = "Género")]
+        public short GenderId { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
