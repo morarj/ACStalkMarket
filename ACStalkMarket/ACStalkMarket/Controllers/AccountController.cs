@@ -158,6 +158,7 @@ namespace ACStalkMarket.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Add to People table
                 var person = new People()
                 {
                     Name = model.Name.ToUpper(),
@@ -165,6 +166,15 @@ namespace ACStalkMarket.Controllers
                     GenderId = model.GenderId
                 };
                 _context.People.Add(person);
+                _context.SaveChanges();
+
+                // Add to Towns table
+                var town = new Town()
+                {
+                    PeopleId = person.Id,
+                    Name = model.TownName
+                };
+                _context.Towns.Add(town);
                 _context.SaveChanges();
 
                 var user = new ApplicationUser { PeopleId = person.Id, UserName = model.Email, Email = model.Email };

@@ -82,6 +82,12 @@ namespace ACStalkMarket.Models
         public short GenderId { get; set; }
 
         [Required]
+        [StringLength(10)]
+        [Display(Name = "Pueblo")]
+        [RegularExpression("^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "Nombre de pueblo no válido.")]
+        public string TownName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
