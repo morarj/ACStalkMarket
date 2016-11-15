@@ -28,6 +28,7 @@ namespace ACStalkMarket.Models
     {
         public DbSet<People> People { get; set; }
         public DbSet<Gender> Genders { get; set; }
+        public DbSet<Town> Towns { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
