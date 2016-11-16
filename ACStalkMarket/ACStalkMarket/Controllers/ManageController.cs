@@ -72,6 +72,7 @@ namespace ACStalkMarket.Controllers
             // Custom
             var personId = Convert.ToInt32(User.Identity.GetPeopleId());
             var person = _context.People.SingleOrDefault(c => c.Id == personId);
+            var town = _context.Towns.SingleOrDefault(c => c.PeopleId == personId);
             //////////
             var model = new IndexViewModel
             {
@@ -81,6 +82,7 @@ namespace ACStalkMarket.Controllers
                 GenderId = person.GenderId,
                 BirthDate = person.BirthDate,
                 Genders = _context.Genders.ToList(),
+                TownName = town.Name,
                 /////////
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
@@ -102,10 +104,13 @@ namespace ACStalkMarket.Controllers
 
             ManageMessageId? message;
             var personInDB = _context.People.Single(c => c.Id == indexViewModel.PeopleId);
+            var townInDB = _context.Towns.Single(c => c.PeopleId == indexViewModel.PeopleId);
 
             personInDB.Name = indexViewModel.Name;
             personInDB.GenderId = indexViewModel.GenderId;
             personInDB.BirthDate = indexViewModel.BirthDate;
+
+            townInDB.Name = indexViewModel.TownName;
 
             try
             {

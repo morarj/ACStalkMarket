@@ -178,7 +178,7 @@ namespace ACStalkMarket.Controllers
                 var town = new Town()
                 {
                     PeopleId = person.Id,
-                    Name = model.TownName
+                    Name = model.TownName.ToUpper()
                 };
                 _context.Towns.Add(town);
                 _context.SaveChanges();

@@ -28,9 +28,14 @@ namespace ACStalkMarket.Models
         [Display(Name = "Fecha de Nacimiento")]
         public DateTime? BirthDate { get; set; }
 
-        [Required]
         [Display(Name = "Género")]
         public short GenderId { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        [Display(Name = "Pueblo")]
+        [RegularExpression("^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "Nombre de pueblo no válido.")]
+        public string TownName { get; set; }
     }
 
     public class ManageLoginsViewModel
