@@ -23,26 +23,32 @@ namespace ACStalkMarket.Models
 
         public WeekPattern WeekPattern { get; set; }
         [Required]
+        [Display(Name = "Patrón")]
         public byte WeekPatternId { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "Fecha de Inicio")]
         // Must be monday
         public DateTime StartingDate { get; set; }
 
         [Required]
         [Range(0, byte.MaxValue)]
+        [Display(Name = "Precio Inicial de los Turnips")]
         public byte TurnipStartingPrice { get; set; }
 
         [Required]
         [Range(0, int.MaxValue)]
+        [Display(Name = "Inversión")]
         public int BellsInvestment { get; set; }
 
         [Required]
+        [Display(Name = "Estado")]
         public bool WeekActive { get; set; }
 
         [Required]
         [Range(0, int.MaxValue)]
+        [Display(Name = "Ganancias")]
         public int Profit { get; set; }
     }
 }

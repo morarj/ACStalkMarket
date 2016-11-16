@@ -23,7 +23,7 @@ namespace ACStalkMarket.Models
         public short tueAM { get; set; }
 
         [Range(0, 999)]
-        [Display(Name = "Martes AM")]
+        [Display(Name = "Martes PM")]
         public short tuePM { get; set; }
 
         [Range(0, 999)]
@@ -31,7 +31,7 @@ namespace ACStalkMarket.Models
         public short wedAM { get; set; }
 
         [Range(0, 999)]
-        [Display(Name = "Miércoles AM")]
+        [Display(Name = "Miércoles PM")]
         public short wedPM { get; set; }
 
         [Range(0, 999)]
@@ -39,7 +39,7 @@ namespace ACStalkMarket.Models
         public short thuAM { get; set; }
 
         [Range(0, 999)]
-        [Display(Name = "Jueves AM")]
+        [Display(Name = "Jueves PM")]
         public short thuPM { get; set; }
 
         [Range(0, 999)]
@@ -47,7 +47,7 @@ namespace ACStalkMarket.Models
         public short friAM { get; set; }
 
         [Range(0, 999)]
-        [Display(Name = "Viernes AM")]
+        [Display(Name = "Viernes PM")]
         public short friPM { get; set; }
 
         [Range(0, 999)]
@@ -55,7 +55,7 @@ namespace ACStalkMarket.Models
         public short satAM { get; set; }
 
         [Range(0, 999)]
-        [Display(Name = "Sábado AM")]
+        [Display(Name = "Sábado PM")]
         public short satPM { get; set; }
     }
 }
