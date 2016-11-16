@@ -47,7 +47,7 @@ namespace ACStalkMarket.Models
         public bool WeekActive { get; set; }
 
         [Required]
-        [Range(0, int.MaxValue)]
+        [Range(int.MinValue, int.MaxValue)]
         [Display(Name = "Ganancias")]
         public int Profit { get; set; }
 
