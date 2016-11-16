@@ -161,6 +161,9 @@ namespace ACStalkMarket.Controllers
             var userInDB = await UserManager.FindByEmailAsync(model.Email);
             if (ModelState.IsValid && userInDB == null)
             {
+                if (model.GenderId == 0)
+                    model.GenderId = Gender.Default;
+
                 // Add to People table
                 var person = new People()
                 {
@@ -202,6 +205,7 @@ namespace ACStalkMarket.Controllers
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
+            model.Genders = _context.Genders.ToList();
             return View(model);
         }
 

@@ -13,5 +13,7 @@ namespace ACStalkMarket.Models
         [Required]
         [StringLength(50)]
         public string GenderName { get; set; }
+
+        public static readonly byte Default = 3;
     }
 }

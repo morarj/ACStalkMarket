@@ -77,7 +77,6 @@ namespace ACStalkMarket.Models
         [Display(Name = "Fecha de Nacimiento")]
         public DateTime? BirthDate { get; set; }
 
-        [Required]
         [Display(Name = "Género")]
         public short GenderId { get; set; }
 
