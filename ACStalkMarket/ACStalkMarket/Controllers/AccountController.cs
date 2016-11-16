@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ACStalkMarket.Models;
+using System.Collections.Generic;
 
 namespace ACStalkMarket.Controllers
 {
@@ -156,7 +157,9 @@ namespace ACStalkMarket.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            // Check if a user with the same Email exists in the DB
+            var userInDB = await UserManager.FindByEmailAsync(model.Email);
+            if (ModelState.IsValid && userInDB == null)
             {
                 // Add to People table
                 var person = new People()
@@ -192,6 +195,10 @@ namespace ACStalkMarket.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
+            }
+            else
+            {
+                ModelState.AddModelError("", "El correo electrónico ya se encuentra registrado.");
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario

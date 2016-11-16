@@ -26,8 +26,7 @@
     <div class="form-group">
         @Html.LabelFor(m => m.GenderId)
         <div class="col-md-10">
-            @Html.DropDownListFor(m => m.GenderId, new SelectList(Model.Genders, "Id", "GenderName"), "Género", new { @class = "form-control" })
-           
+            @Html.DropDownListFor(m => m.GenderId, new SelectList(Model.Genders, "Id", "GenderName"), "Género", new { @class = "form-control" })  
         </div>
     </div>
     <div class="form-group">
