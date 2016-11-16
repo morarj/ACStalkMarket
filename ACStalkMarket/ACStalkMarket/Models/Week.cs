@@ -64,5 +64,10 @@ namespace ACStalkMarket.Models
             WeekPatternId = week.WeekPatternId;
             WeekValuesId = week.WeekValuesId;
         }
+
+        public int CalculateProfit(int turnipSellingPrice)
+        {
+            return ((BellsInvestment / TurnipStartingPrice) * turnipSellingPrice) - BellsInvestment;
+        }
     }
 }
