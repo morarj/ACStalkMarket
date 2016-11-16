@@ -29,6 +29,9 @@ namespace ACStalkMarket.Models
         public DbSet<People> People { get; set; }
         public DbSet<Gender> Genders { get; set; }
         public DbSet<Town> Towns { get; set; }
+        public DbSet<Week> Weeks { get; set; }
+        public DbSet<WeekValues> WeekValues { get; set; }
+        public DbSet<WeekPattern> WeekPatterns { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

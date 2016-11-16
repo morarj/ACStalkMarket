@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201611152243285_AddTownModel.Designer.cs">
       <DependentUpon>201611152243285_AddTownModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611160353527_AddWeekModels.cs" />
+    <Compile Include="Migrations\201611160353527_AddWeekModels.Designer.cs">
+      <DependentUpon>201611160353527_AddWeekModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Gender.cs" />
@@ -197,6 +201,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\People.cs" />
     <Compile Include="Models\Town.cs" />
+    <Compile Include="Models\Week.cs" />
+    <Compile Include="Models\WeekPattern.cs" />
+    <Compile Include="Models\WeekValues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -283,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611152243285_AddTownModel.resx">
       <DependentUpon>201611152243285_AddTownModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611160353527_AddWeekModels.resx">
+      <DependentUpon>201611160353527_AddWeekModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

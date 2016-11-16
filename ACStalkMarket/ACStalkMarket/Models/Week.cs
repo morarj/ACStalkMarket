@@ -15,8 +15,7 @@ namespace ACStalkMarket.Models
         public int PeopleId { get; set; }
 
         public Town Town { get; set; }
-        [Required]
-        public int TownId { get; set; }
+        public int? TownId { get; set; }
 
         public WeekValues WeekValues { get; set; }
         [Required]
@@ -32,7 +31,7 @@ namespace ACStalkMarket.Models
         public DateTime StartingDate { get; set; }
 
         [Required]
-        [Range(1, byte.MaxValue)]
+        [Range(0, byte.MaxValue)]
         public byte TurnipStartingPrice { get; set; }
 
         [Required]
