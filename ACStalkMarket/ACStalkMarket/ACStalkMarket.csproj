@@ -205,6 +205,8 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\People.cs" />
+    <Compile Include="Models\StalkMarketAutomaton.cs" />
+    <Compile Include="Models\StalkMarketPatterns.cs" />
     <Compile Include="Models\Town.cs" />
     <Compile Include="Models\Week.cs" />
     <Compile Include="Models\WeekPattern.cs" />

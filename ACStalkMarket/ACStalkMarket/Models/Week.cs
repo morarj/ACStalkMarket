@@ -69,5 +69,11 @@ namespace ACStalkMarket.Models
         {
             return ((BellsInvestment / TurnipStartingPrice) * turnipSellingPrice) - BellsInvestment;
         }
+
+        public void CalculatePattern(WeekValues weekValues)
+        {
+            StalkMarketAutomaton test = new StalkMarketAutomaton(StartingDate, TurnipStartingPrice, weekValues);
+            WeekPatternId = test.Pattern;
+        }
     }
 }

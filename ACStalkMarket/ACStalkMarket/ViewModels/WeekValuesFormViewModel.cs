@@ -10,6 +10,8 @@ namespace ACStalkMarket.ViewModels
 {
     public class WeekValuesFormViewModel
     {
+        public IEnumerable<WeekPattern> WeekPatterns { get; set; }
+
         public WeekValues WeekValues { get; set; }
 
         public Week Week { get; set; }
