@@ -50,5 +50,19 @@ namespace ACStalkMarket.Models
         [Range(0, int.MaxValue)]
         [Display(Name = "Ganancias")]
         public int Profit { get; set; }
+
+        public void Map(Week week)
+        {
+            Id = week.Id;
+            BellsInvestment = week.BellsInvestment;
+            PeopleId = week.PeopleId;
+            Profit = week.Profit;
+            StartingDate = week.StartingDate;
+            TownId = week.TownId;
+            TurnipStartingPrice = week.TurnipStartingPrice;
+            WeekActive = week.WeekActive;
+            WeekPatternId = week.WeekPatternId;
+            WeekValuesId = week.WeekValuesId;
+        }
     }
 }

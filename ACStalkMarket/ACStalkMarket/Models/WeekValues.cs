@@ -57,5 +57,22 @@ namespace ACStalkMarket.Models
         [Range(0, 999)]
         [Display(Name = "Sábado PM")]
         public short satPM { get; set; }
+
+        public void Map(WeekValues weekValues)
+        {
+            Id = weekValues.Id;
+            monAM = weekValues.monAM;
+            monPM = weekValues.monPM;
+            tueAM = weekValues.tueAM;
+            tuePM = weekValues.tuePM;
+            wedAM = weekValues.wedAM;
+            wedPM = weekValues.wedPM;
+            thuAM = weekValues.thuAM;
+            thuPM = weekValues.thuPM;
+            friAM = weekValues.friAM;
+            friPM = weekValues.friPM;
+            satAM = weekValues.satAM;
+            satPM = weekValues.satPM;
+        }
     }
 }

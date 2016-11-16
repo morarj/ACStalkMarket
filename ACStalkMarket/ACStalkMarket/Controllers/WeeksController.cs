@@ -49,6 +49,7 @@ namespace ACStalkMarket.Controllers
         public ActionResult Edit(int id)
         {
             var weekInDB = _context.Weeks.SingleOrDefault(w => w.Id == id);
+            var test = weekInDB.WeekValuesId;
             var weekValuesInDB = _context.WeekValues.SingleOrDefault(w => w.Id == weekInDB.WeekValuesId);
 
             if (weekInDB == null || weekValuesInDB == null)
@@ -93,11 +94,14 @@ namespace ACStalkMarket.Controllers
             }
             else
             {
+                // For the FK
+                viewModel.Week.WeekValuesId = viewModel.WeekValues.Id;
+
                 var weekValuesInDB = _context.WeekValues.Single(w => w.Id == viewModel.WeekValues.Id);
                 var weekInDB = _context.Weeks.Single(w => w.Id == viewModel.Week.Id);
 
-                weekValuesInDB = viewModel.WeekValues;
-                weekInDB = viewModel.Week;
+                weekValuesInDB.Map(viewModel.WeekValues);
+                weekInDB.Map(viewModel.Week);
             }
 
             try
@@ -106,7 +110,7 @@ namespace ACStalkMarket.Controllers
             }
             catch (DbEntityValidationException e)
             {
-
+                Console.WriteLine(e);
             }
 
             return RedirectToAction("Index", "Weeks");
