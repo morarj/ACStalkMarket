@@ -36,6 +36,10 @@ namespace ACStalkMarket.Models
         [Display(Name = "Fecha de Venta")]
         public DateTime? SellingDate { get; set; }
 
+        [Range(0, 999)]
+        [Display(Name = "Precio Máximo de Venta")]
+        public int? TurnipSellingPrice { get; set; }
+
         [Required]
         [Range(0, byte.MaxValue)]
         [Display(Name = "Precio Inicial de los Turnips")]
@@ -70,9 +74,12 @@ namespace ACStalkMarket.Models
             WeekActive = week.WeekActive;
         }
 
-        public int CalculateProfit(int turnipSellingPrice)
+        public int CalculateProfit()
         {
-            return ((BellsInvestment / TurnipStartingPrice) * turnipSellingPrice) - BellsInvestment;
+            if (TurnipSellingPrice != null)
+                return ((BellsInvestment / TurnipStartingPrice) * (int) TurnipSellingPrice) - BellsInvestment;
+
+            return 0;
         }
 
         public void CalculatePattern(WeekValues weekValues)
