@@ -77,8 +77,9 @@ namespace ACStalkMarket.Models
 
         public void CalculatePattern(WeekValues weekValues)
         {
-            StalkMarketAutomaton test = new StalkMarketAutomaton(StartingDate, TurnipStartingPrice, weekValues);
-            WeekPatternId = test.Pattern;
+            StalkMarketAutomaton automaton = new StalkMarketAutomaton(StartingDate, TurnipStartingPrice, weekValues);
+            SellingDate = automaton.SellingDate;
+            WeekPatternId = automaton.Pattern;
         }
     }
 }
