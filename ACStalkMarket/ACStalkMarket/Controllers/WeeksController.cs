@@ -39,7 +39,7 @@ namespace ACStalkMarket.Controllers
                 StartingDate = DateTime.Today,
                 TownId = town.Id,
                 WeekActive = true,
-                WeekPatternId = 1
+                WeekPatternId = StalkMarketPatterns.Default
             };
 
             return View("WeekValuesForm", viewModel);

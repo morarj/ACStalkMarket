@@ -13,5 +13,6 @@ namespace ACStalkMarket.Models
         public const byte Random = 4;
         public const byte Spike = 5;
         public const byte Sell = 6;
+        public const byte Default = 1;
     }
 }
