@@ -36,12 +36,13 @@ namespace ACStalkMarket.Models
         [Display(Name = "Fecha de Venta")]
         public DateTime? SellingDate { get; set; }
 
+        [Required]
         [Range(0, 999)]
         [Display(Name = "Precio Máximo de Venta")]
-        public int? TurnipSellingPrice { get; set; }
+        public int TurnipSellingPrice { get; set; }
 
         [Required]
-        [Range(0, byte.MaxValue)]
+        [Range(1, byte.MaxValue)]
         [Display(Name = "Precio Inicial de los Turnips")]
         public byte TurnipStartingPrice { get; set; }
 
@@ -70,6 +71,7 @@ namespace ACStalkMarket.Models
             SellingDate = week.SellingDate;
             StartingDate = week.StartingDate;
             TownId = week.TownId;
+            TurnipSellingPrice = week.TurnipSellingPrice;
             TurnipStartingPrice = week.TurnipStartingPrice;
             WeekActive = week.WeekActive;
         }

@@ -207,6 +207,10 @@
     <Compile Include="Migrations\201611172314530_AddTurnipSellingPriceToWeekModel.Designer.cs">
       <DependentUpon>201611172314530_AddTurnipSellingPriceToWeekModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611172319418_UpdateWeekModel1.cs" />
+    <Compile Include="Migrations\201611172319418_UpdateWeekModel1.Designer.cs">
+      <DependentUpon>201611172319418_UpdateWeekModel1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Gender.cs" />
@@ -320,6 +324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611172314530_AddTurnipSellingPriceToWeekModel.resx">
       <DependentUpon>201611172314530_AddTurnipSellingPriceToWeekModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611172319418_UpdateWeekModel1.resx">
+      <DependentUpon>201611172319418_UpdateWeekModel1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
