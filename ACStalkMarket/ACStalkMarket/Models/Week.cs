@@ -32,7 +32,6 @@ namespace ACStalkMarket.Models
         // Must be monday
         public DateTime StartingDate { get; set; }
 
-        [DataType(DataType.Date)]
         [Display(Name = "Fecha de Venta")]
         public DateTime? SellingDate { get; set; }
 
@@ -76,12 +75,9 @@ namespace ACStalkMarket.Models
             WeekActive = week.WeekActive;
         }
 
-        public int CalculateProfit()
+        public void CalculateProfit()
         {
-            if (TurnipSellingPrice != null)
-                return ((BellsInvestment / TurnipStartingPrice) * (int) TurnipSellingPrice) - BellsInvestment;
-
-            return 0;
+            Profit = ((BellsInvestment / TurnipStartingPrice) * TurnipSellingPrice) - BellsInvestment;
         }
 
         public void CalculatePattern(WeekValues weekValues)
