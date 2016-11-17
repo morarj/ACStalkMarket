@@ -32,6 +32,10 @@ namespace ACStalkMarket.Models
         // Must be monday
         public DateTime StartingDate { get; set; }
 
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha de Venta")]
+        public DateTime? SellingDate { get; set; }
+
         [Required]
         [Range(0, byte.MaxValue)]
         [Display(Name = "Precio Inicial de los Turnips")]
@@ -54,15 +58,16 @@ namespace ACStalkMarket.Models
         public void Map(Week week)
         {
             Id = week.Id;
-            BellsInvestment = week.BellsInvestment;
             PeopleId = week.PeopleId;
+            WeekPatternId = week.WeekPatternId;
+            WeekValuesId = week.WeekValuesId;
+            BellsInvestment = week.BellsInvestment;
             Profit = week.Profit;
+            SellingDate = week.SellingDate;
             StartingDate = week.StartingDate;
             TownId = week.TownId;
             TurnipStartingPrice = week.TurnipStartingPrice;
             WeekActive = week.WeekActive;
-            WeekPatternId = week.WeekPatternId;
-            WeekValuesId = week.WeekValuesId;
         }
 
         public int CalculateProfit(int turnipSellingPrice)

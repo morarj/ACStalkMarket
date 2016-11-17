@@ -199,6 +199,10 @@
     <Compile Include="Migrations\201611160408415_PopulateWeekPatterns.Designer.cs">
       <DependentUpon>201611160408415_PopulateWeekPatterns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611171840215_UpdateWeekModel.cs" />
+    <Compile Include="Migrations\201611171840215_UpdateWeekModel.Designer.cs">
+      <DependentUpon>201611171840215_UpdateWeekModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Gender.cs" />
@@ -306,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611160408415_PopulateWeekPatterns.resx">
       <DependentUpon>201611160408415_PopulateWeekPatterns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611171840215_UpdateWeekModel.resx">
+      <DependentUpon>201611171840215_UpdateWeekModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
