@@ -76,13 +76,15 @@ namespace ACStalkMarket.Models
         // State
         private byte State(byte previousPattern)
         {
+            // If its Saturday afternoon exit
             if (Date.AddHours(12).DayOfWeek == DayOfWeek.Sunday)
                 return 0;
 
-            // Get the retail price of the day after
-            var retailDayAfterPrice = GetRetailPrice(Date.AddHours(+12));
+            // Get the next retail price
+            var retailNextPrice = GetRetailPrice(Date.AddHours(+12));
 
-            if (retailDayAfterPrice == 0)
+            // If the next retail price if 0 thn exit
+            if (retailNextPrice == 0)
                 return 0;
 
             var caseSwitch = GetNextStep(previousPattern);
@@ -105,10 +107,8 @@ namespace ACStalkMarket.Models
         {
             // Get the retail price of the day
             var retailPrice = GetRetailPrice();
-            // Get the retail price of the day before
-            var retailDayBeforePrice = GetRetailPrice(Date.AddHours(-12));
-            // Get the retail price of the day after
-            var retailDayAfterPrice = GetRetailPrice(Date.AddHours(+12));
+            // Get the last retail price
+            var retailLastPrice = GetRetailPrice(Date.AddHours(-12));
 
             // Random
             if (prevPattern == StalkMarketPatterns.Random)
@@ -128,7 +128,7 @@ namespace ACStalkMarket.Models
             // Decreasing
             if(prevPattern == StalkMarketPatterns.Decreasing)
             {
-                if (retailDayBeforePrice > retailPrice)
+                if (retailLastPrice > retailPrice)
                 {
                     if (Date.AddHours(12).DayOfWeek == DayOfWeek.Friday && 
                             Pattern != StalkMarketPatterns.LowSpike && Pattern != StalkMarketPatterns.HighSpike)
@@ -140,7 +140,7 @@ namespace ACStalkMarket.Models
 
                     return StalkMarketPatterns.Decreasing;
                 }
-                else if (retailPrice > retailDayBeforePrice)
+                else if (retailPrice > retailLastPrice)
                 {
                     return StalkMarketPatterns.Spike;
                 }
@@ -155,8 +155,8 @@ namespace ACStalkMarket.Models
             {
                 if (Date.AddHours(12).DayOfWeek >= DayOfWeek.Wednesday)
                 {
-                    if(retailPrice > retailDayBeforePrice &&
-                        retailDayBeforePrice > GetRetailPrice(Date.AddHours(-24)))
+                    if(retailPrice > retailLastPrice &&
+                        retailLastPrice > GetRetailPrice(Date.AddHours(-24)))
                     {
                         if (retailPrice >= 300)
                         {
@@ -169,8 +169,8 @@ namespace ACStalkMarket.Models
 
                 if (Date.DayOfWeek >= DayOfWeek.Wednesday)
                 {
-                    if (retailPrice > retailDayBeforePrice &&
-                        retailDayBeforePrice > GetRetailPrice(Date.AddHours(-24)) &&
+                    if (retailPrice > retailLastPrice &&
+                        retailLastPrice > GetRetailPrice(Date.AddHours(-24)) &&
                         GetRetailPrice(Date.AddHours(-24)) > GetRetailPrice(Date.AddHours(-36)))
                     {
                         Pattern = StalkMarketPatterns.LowSpike;
