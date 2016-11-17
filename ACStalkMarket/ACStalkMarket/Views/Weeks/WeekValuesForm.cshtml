@@ -14,6 +14,11 @@
         @Html.ValidationMessageFor(m => m.Week.StartingDate)
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.Week.SellingDate)
+        @Html.TextBoxFor(m => m.Week.SellingDate, "{0:dd/MM/yyyy tt}", new { @readonly = "readonly", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Week.SellingDate)
+    </div>
+    <div class="form-group">
         @Html.LabelFor(m => m.Week.TurnipStartingPrice)
         @Html.TextBoxFor(m => m.Week.TurnipStartingPrice, new { type = "number", @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Week.TurnipStartingPrice)

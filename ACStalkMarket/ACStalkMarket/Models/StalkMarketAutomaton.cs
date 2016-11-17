@@ -10,19 +10,20 @@ namespace ACStalkMarket.Models
     {
         public DateTime? SellingDate { get; set; }
 
+        private byte pattern;
         public byte Pattern
         {
             get
             {
-                if (Pattern == 0 || Pattern > 4)
+                if (pattern == 0 || pattern > 4)
                     return StalkMarketPatterns.Default;
-                else
-                    return Pattern;
+
+                return pattern;
             }
 
             set
             {
-                Pattern = value;
+                pattern = value;
             }
         }
 
