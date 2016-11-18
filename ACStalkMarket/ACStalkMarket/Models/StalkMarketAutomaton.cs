@@ -10,6 +10,8 @@ namespace ACStalkMarket.Models
     {
         public DateTime? SellingDate { get; set; }
 
+        public int SellingPrice { get; set; }
+
         private byte pattern;
         public byte Pattern
         {
@@ -117,10 +119,16 @@ namespace ACStalkMarket.Models
                 if (retailPrice >= 110 && retailPrice >= BuyingPrice)
                 {
                     if (SellingDate == null)
+                    {
                         SellingDate = Date;
+                        SellingPrice = retailPrice;
+                    }
 
                     if (SellingDate != null && retailPrice > GetRetailPrice((DateTime)SellingDate))
+                    {
                         SellingDate = Date;
+                        SellingPrice = retailPrice;
+                    }
                 }
 
                 return StalkMarketPatterns.Random;
@@ -136,6 +144,7 @@ namespace ACStalkMarket.Models
                     {
                         Pattern = StalkMarketPatterns.Decreasing;
                         SellingDate = Date;
+                        SellingPrice = retailPrice;
                         return StalkMarketPatterns.Sell;
                     }
 
@@ -164,6 +173,7 @@ namespace ACStalkMarket.Models
                         {
                             Pattern = StalkMarketPatterns.HighSpike;
                             SellingDate = Date;
+                            SellingPrice = retailPrice;
                             return StalkMarketPatterns.Sell;
                         }
                     }
@@ -178,6 +188,7 @@ namespace ACStalkMarket.Models
                     {
                         Pattern = StalkMarketPatterns.LowSpike;
                         SellingDate = Date;
+                        SellingPrice = retailPrice;
                         return StalkMarketPatterns.Sell;
                     }
                 }

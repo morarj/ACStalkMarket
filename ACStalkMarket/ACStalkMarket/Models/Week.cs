@@ -85,6 +85,7 @@ namespace ACStalkMarket.Models
             StalkMarketAutomaton automaton = new StalkMarketAutomaton(StartingDate, TurnipStartingPrice, weekValues);
             SellingDate = automaton.SellingDate;
             WeekPatternId = automaton.Pattern;
+            TurnipSellingPrice = automaton.SellingPrice;
         }
     }
 }
