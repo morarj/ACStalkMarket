@@ -47,7 +47,7 @@ namespace ACStalkMarket.Models
 
         [Required]
         [Range(0, int.MaxValue)]
-        [Display(Name = "Inversión")]
+        [Display(Name = "Bells Invertidos")]
         public int BellsInvestment { get; set; }
 
         [Required]
@@ -56,7 +56,7 @@ namespace ACStalkMarket.Models
 
         [Required]
         [Range(int.MinValue, int.MaxValue)]
-        [Display(Name = "Ganancias")]
+        [Display(Name = "Bells Obtenidos")]
         public int Profit { get; set; }
 
         public void Map(Week week)
