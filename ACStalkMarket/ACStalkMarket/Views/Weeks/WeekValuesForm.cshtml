@@ -23,6 +23,10 @@
         @Html.ValidationMessageFor(m => m.Week.TurnipStartingPrice)
     </div>
     <div class="form-group">
+        @Html.LabelFor(m => m.Week.TurnipSellingPrice)
+        @Html.TextBoxFor(m => m.Week.TurnipSellingPrice, new { @readonly = "readonly", type = "number", @class = "form-control" })
+    </div>
+    <div class="form-group">
         @Html.LabelFor(m => m.Week.BellsInvestment)
         @Html.TextBoxFor(m => m.Week.BellsInvestment, new { type = "number", @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Week.BellsInvestment)
