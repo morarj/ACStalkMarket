@@ -31,7 +31,11 @@ namespace ACStalkMarket.Controllers
             var personId = Convert.ToInt32(User.Identity.GetPeopleId());
             var town = _context.Towns.Single(p => p.PeopleId == personId);
 
-            var viewModel = new WeekValuesFormViewModel();
+            var viewModel = new WeekValuesFormViewModel()
+            {
+                WeekPatterns = _context.WeekPatterns.ToList(),
+            };
+
             viewModel.WeekValues = new WeekValues();
             viewModel.Week = new Week()
             {
@@ -49,7 +53,6 @@ namespace ACStalkMarket.Controllers
         public ActionResult Edit(int id)
         {
             var weekInDB = _context.Weeks.SingleOrDefault(w => w.Id == id);
-            var test = weekInDB.WeekValuesId;
             var weekValuesInDB = _context.WeekValues.SingleOrDefault(w => w.Id == weekInDB.WeekValuesId);
 
             if (weekInDB == null || weekValuesInDB == null)
@@ -58,6 +61,7 @@ namespace ACStalkMarket.Controllers
             var viewModel = new WeekValuesFormViewModel()
             {
                 Week = weekInDB,
+                WeekPatterns = _context.WeekPatterns.ToList(),
                 WeekValues = weekValuesInDB
             };
 
