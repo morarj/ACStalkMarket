@@ -89,8 +89,8 @@ namespace ACStalkMarket.Controllers
                 var week = new Week();
                 week = viewModel.Week;
                 week.WeekValuesId = viewModel.WeekValues.Id;
-                week.CalculateProfit();
                 week.CalculatePattern(viewModel.WeekValues);
+                week.CalculateProfit();
 
                 _context.Weeks.Add(week);
             }
@@ -99,8 +99,8 @@ namespace ACStalkMarket.Controllers
                 // For the FK
                 viewModel.Week.WeekValuesId = viewModel.WeekValues.Id;
 
-                viewModel.Week.CalculateProfit();
                 viewModel.Week.CalculatePattern(viewModel.WeekValues);
+                viewModel.Week.CalculateProfit();
 
                 var weekValuesInDB = _context.WeekValues.Single(w => w.Id == viewModel.WeekValues.Id);
                 var weekInDB = _context.Weeks.Single(w => w.Id == viewModel.Week.Id);

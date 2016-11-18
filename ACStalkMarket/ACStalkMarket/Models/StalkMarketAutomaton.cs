@@ -157,7 +157,8 @@ namespace ACStalkMarket.Models
                 if (Date.AddHours(12).DayOfWeek >= DayOfWeek.Wednesday)
                 {
                     if(retailPrice > retailLastPrice &&
-                        retailLastPrice > GetRetailPrice(Date.AddHours(-24)))
+                        retailLastPrice > GetRetailPrice(Date.AddHours(-24)) &&
+                        GetRetailPrice(Date.AddHours(-24)) > GetRetailPrice(Date.AddHours(-36)))
                     {
                         if (retailPrice >= 300)
                         {
@@ -172,7 +173,8 @@ namespace ACStalkMarket.Models
                 {
                     if (retailPrice > retailLastPrice &&
                         retailLastPrice > GetRetailPrice(Date.AddHours(-24)) &&
-                        GetRetailPrice(Date.AddHours(-24)) > GetRetailPrice(Date.AddHours(-36)))
+                        GetRetailPrice(Date.AddHours(-24)) > GetRetailPrice(Date.AddHours(-36)) &&
+                        GetRetailPrice(Date.AddHours(-36)) > GetRetailPrice(Date.AddHours(-48)))
                     {
                         Pattern = StalkMarketPatterns.LowSpike;
                         SellingDate = Date;
