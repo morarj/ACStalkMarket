@@ -190,6 +190,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\WeeksController.cs" />
+    <Compile Include="Dtos\GenderDto.cs" />
+    <Compile Include="Dtos\PeopleDto.cs" />
+    <Compile Include="Dtos\TownDto.cs" />
+    <Compile Include="Dtos\WeekDto.cs" />
+    <Compile Include="Dtos\WeekPatternDto.cs" />
+    <Compile Include="Dtos\WeekValuesDto.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

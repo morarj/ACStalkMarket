@@ -1,12 +1,10 @@
-﻿using ACStalkMarket.Models;
+﻿using AutoMapper;
+using ACStalkMarket.Extensions;
+using ACStalkMarket.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
-using ACStalkMarket.Extensions;
 
 namespace ACStalkMarket.Controllers.API
 {

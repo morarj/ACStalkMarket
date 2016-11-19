@@ -32,6 +32,7 @@ namespace ACStalkMarket.Models
         // Must be monday
         public DateTime StartingDate { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "Fecha de Venta")]
         public DateTime? SellingDate { get; set; }
 
