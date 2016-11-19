@@ -6,111 +6,141 @@
 
 <h2>@Model.Title</h2>
 
+<h3>Resumen de la semana</h3>
+
 @using (Html.BeginForm("Save", "Weeks"))
 {
-    <div class="form-group">
-        @Html.LabelFor(m => m.Week.StartingDate)
-        @Html.TextBoxFor(m => m.Week.StartingDate, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Week.StartingDate)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Week.SellingDate)
-        @Html.TextBox(" ", Model.SellingDateShort, new { @readonly = "readonly", @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Week.TurnipStartingPrice)
-        @Html.TextBoxFor(m => m.Week.TurnipStartingPrice, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Week.TurnipStartingPrice)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Week.TurnipSellingPrice)
-        @Html.TextBoxFor(m => m.Week.TurnipSellingPrice, new { @readonly = "readonly", type = "number", @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Week.BellsInvestment)
-        @Html.TextBoxFor(m => m.Week.BellsInvestment, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Week.BellsInvestment)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Week.WeekActive)
-        @Html.DropDownListFor(m => m.Week.WeekActive, new [] { new SelectListItem { Text = "Terminada", Value = "False" }, new SelectListItem { Text = "En Progreso", Value = "True", Selected = true } }, "-- Selecciona --", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Week.WeekActive)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Week.WeekPatternId)
-        @Html.DropDownListFor(m => m.Week.WeekPatternId, new SelectList(Model.WeekPatterns, "Id", "Name"), new { @readonly = "readonly", @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Week.Profit)
-        @Html.TextBoxFor(m => m.Week.Profit, new { @readonly = "readonly", type = "number", @class = "form-control" })
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Week.StartingDate)
+            @Html.TextBoxFor(m => m.Week.StartingDate, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Week.StartingDate)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Week.SellingDate)
+            @Html.TextBox(" ", Model.SellingDateShort, new { @readonly = "readonly", @class = "form-control" })
+        </div>
     </div>
 
-    <h3>Valores Diarios</h3>
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Week.TurnipStartingPrice)
+            @Html.TextBoxFor(m => m.Week.TurnipStartingPrice, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Week.TurnipStartingPrice)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Week.TurnipSellingPrice)
+            @Html.TextBoxFor(m => m.Week.TurnipSellingPrice, new { @readonly = "readonly", type = "number", @class = "form-control" })
+        </div>
+    </div>
+      
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Week.BellsInvestment)
+            @Html.TextBoxFor(m => m.Week.BellsInvestment, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Week.BellsInvestment)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Week.Profit)
+            @Html.TextBoxFor(m => m.Week.Profit, new { @readonly = "readonly", type = "number", @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Week.WeekActive) <button class="btn btn-link js-finish-week" week-id="@Model.Week.Id">Terminar Semana</button>
+            @Html.DropDownListFor(m => m.Week.WeekActive, new[] { new SelectListItem { Text = "Terminada", Value = "False" }, new SelectListItem { Text = "En Progreso", Value = "True", Selected = true } }, new { @readonly = "readonly", @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.Week.WeekPatternId)
+            @Html.DropDownListFor(m => m.Week.WeekPatternId, new SelectList(Model.WeekPatterns, "Id", "Name"), new { @readonly = "readonly", @class = "form-control" })
+        </div>
+    </div> 
+   
+    <h3>Detalle de los valores semanales</h3>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.monAM)
-        @Html.TextBoxFor(m => m.WeekValues.monAM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.monAM)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.monPM)
-        @Html.TextBoxFor(m => m.WeekValues.monPM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.monPM)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.tueAM)
-        @Html.TextBoxFor(m => m.WeekValues.tueAM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.tueAM)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.tuePM)
-        @Html.TextBoxFor(m => m.WeekValues.tuePM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.tuePM)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.wedAM)
-        @Html.TextBoxFor(m => m.WeekValues.wedAM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.wedAM)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.wedPM)
-        @Html.TextBoxFor(m => m.WeekValues.wedPM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.wedPM)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.thuAM)
-        @Html.TextBoxFor(m => m.WeekValues.thuAM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.thuAM)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.thuPM)
-        @Html.TextBoxFor(m => m.WeekValues.thuPM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.thuPM)
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.friAM)
-        @Html.TextBoxFor(m => m.WeekValues.friAM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.friAM)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.friPM)
-        @Html.TextBoxFor(m => m.WeekValues.friPM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.friPM)
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.monAM)
+            @Html.TextBoxFor(m => m.WeekValues.monAM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.monAM)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.monPM)
+            @Html.TextBoxFor(m => m.WeekValues.monPM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.monPM)
+        </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.satAM)
-        @Html.TextBoxFor(m => m.WeekValues.satAM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.satAM)
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.tueAM)
+            @Html.TextBoxFor(m => m.WeekValues.tueAM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.tueAM)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.tuePM)
+            @Html.TextBoxFor(m => m.WeekValues.tuePM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.tuePM)
+        </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.WeekValues.satPM)
-        @Html.TextBoxFor(m => m.WeekValues.satPM, new { type = "number", @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.WeekValues.satPM)
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.wedAM)
+            @Html.TextBoxFor(m => m.WeekValues.wedAM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.wedAM)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.wedPM)
+            @Html.TextBoxFor(m => m.WeekValues.wedPM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.wedPM)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.thuAM)
+            @Html.TextBoxFor(m => m.WeekValues.thuAM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.thuAM)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.thuPM)
+            @Html.TextBoxFor(m => m.WeekValues.thuPM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.thuPM)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.friAM)
+            @Html.TextBoxFor(m => m.WeekValues.friAM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.friAM)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.friPM)
+            @Html.TextBoxFor(m => m.WeekValues.friPM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.friPM)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.satAM)
+            @Html.TextBoxFor(m => m.WeekValues.satAM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.satAM)
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(m => m.WeekValues.satPM)
+            @Html.TextBoxFor(m => m.WeekValues.satPM, new { type = "number", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WeekValues.satPM)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
     </div>
 
     @Html.HiddenFor(m => m.WeekValues.Id)
@@ -118,8 +148,6 @@
     @Html.HiddenFor(m => m.Week.TownId)
     @Html.HiddenFor(m => m.Week.Id)
     @Html.AntiForgeryToken()
-
-    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
 }
 
 @section scripts
