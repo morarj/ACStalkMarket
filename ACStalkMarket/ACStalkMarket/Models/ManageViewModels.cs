@@ -15,9 +15,14 @@ namespace ACStalkMarket.Models
         public bool BrowserRemembered { get; set; }
 
         // Custom
-        [Required]
-        public int PeopleId { get; set; }
+        //[Required]
+        //public int PeopleId { get; set; }
+
+        public People Person { get; set; }
+
         public IEnumerable<Gender> Genders { get; set; }
+
+        /*
         [Required]
         [StringLength(255)]
         [Display(Name = "Nombre")]
@@ -29,7 +34,7 @@ namespace ACStalkMarket.Models
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "Género")]
-        public short GenderId { get; set; }
+        public short GenderId { get; set; } */
 
         [Required]
         [StringLength(10)]

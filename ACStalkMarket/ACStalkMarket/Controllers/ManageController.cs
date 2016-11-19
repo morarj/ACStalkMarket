@@ -69,27 +69,29 @@ namespace ACStalkMarket.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            // Custom
+            // Custom //
             var personId = Convert.ToInt32(User.Identity.GetPeopleId());
             var person = _context.People.SingleOrDefault(c => c.Id == personId);
             var town = _context.Towns.SingleOrDefault(c => c.PeopleId == personId);
-            //////////
+            ////////////
             var model = new IndexViewModel
             {
-                // Custom
-                PeopleId = personId,
-                Name = person.Name,
-                GenderId = person.GenderId,
-                BirthDate = person.BirthDate,
-                Genders = _context.Genders.ToList(),
-                TownName = town.Name,
-                /////////
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+            // Custom
+            model.Person = new People();
+            model.Person.Id = personId;
+            model.Person.Name = person.Name;
+            model.Person.GenderId = person.GenderId;
+            model.Person.BirthDate = person.BirthDate;
+            model.Genders = _context.Genders.ToList();
+            model.TownName = town.Name;
+            /////////
+
             return View(model);
         }
 
@@ -103,14 +105,14 @@ namespace ACStalkMarket.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.Error });
 
             ManageMessageId? message;
-            var personInDB = _context.People.Single(c => c.Id == indexViewModel.PeopleId);
-            var townInDB = _context.Towns.Single(c => c.PeopleId == indexViewModel.PeopleId);
+            var personInDB = _context.People.Single(c => c.Id == indexViewModel.Person.Id);
+            var townInDB = _context.Towns.Single(c => c.PeopleId == indexViewModel.Person.Id);
 
-            personInDB.Name = indexViewModel.Name;
-            personInDB.GenderId = indexViewModel.GenderId;
-            personInDB.BirthDate = indexViewModel.BirthDate;
+            personInDB.Name = indexViewModel.Person.Name.ToUpper();
+            personInDB.GenderId = indexViewModel.Person.GenderId;
+            personInDB.BirthDate = indexViewModel.Person.BirthDate;
 
-            townInDB.Name = indexViewModel.TownName;
+            townInDB.Name = indexViewModel.TownName.ToUpper();
 
             try
             {
