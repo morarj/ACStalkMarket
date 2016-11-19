@@ -13,7 +13,11 @@ namespace ACStalkMarket.App_Start
         public MappingProfile()
         {
             // Domains to DTOs
+            CreateMap<People, PeopleDto>();
+            CreateMap<Town, TownDto>();
             CreateMap<Week, WeekDto>();
+            CreateMap<WeekPattern, WeekPatternDto>();
+            CreateMap<WeekValues, WeekValuesDto>();
 
             // DTOs to Domains
         }

@@ -19,10 +19,11 @@ namespace ACStalkMarket.Controllers.API
         }
 
         // GET: /api/weeks
-        public IHttpActionResult GetMovies()
+        public IHttpActionResult GetWeeks(int id = 0)
         {
-            var weekQuery = _context.Weeks.Include(w => w.WeekPattern).
-                    Where(w => w.PeopleId == Convert.ToInt32(User.Identity.GetPeopleId())).
+            var weekQuery = _context.Weeks.
+                    Include(w => w.WeekPattern).
+                    Where(w => w.PeopleId == id).
                     OrderByDescending(w => w.StartingDate);
 
             return Ok(weekQuery.ToList().Select(Mapper.Map<Week, WeekDto>));
@@ -30,7 +31,7 @@ namespace ACStalkMarket.Controllers.API
 
         // PUT: /api/weeks/1
         [HttpPut]
-        public IHttpActionResult FinishWeek(int id)
+        public IHttpActionResult UpdateWeek(int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest();

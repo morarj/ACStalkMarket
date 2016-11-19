@@ -1,4 +1,5 @@
-﻿
+﻿@using ACStalkMarket.Extensions;
+@using System.Data.Entity;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,3 +22,51 @@
 
     <tbody></tbody>
 </table>
+
+<input type="hidden" id="people-id" data-people-id="@User.Identity.GetPeopleId()">
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#weeks").DataTable({
+                ajax: {
+                    url: "/api/weeks/" + $("#people-id").attr("data-people-id"),
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "startingDate",
+                        render: function (data, type, week) {
+                            var date = new Date(week.startingDate);
+                            var shortDate =  date.getUTCDate() + "/" + date.getUTCMonth() + "/" + date.getUTCFullYear();
+                            return "<a href='/weeks/edit/" + week.id + "'>" + shortDate + "</a>";
+                        }
+                    },
+                    {
+                        data: "sellingDate",
+                        render: function (data) {
+                            var date = new Date(data);
+                            return date.getUTCDate() + "/" + date.getUTCMonth() + "/" + date.getUTCFullYear();
+                        }
+                    },
+                    {
+                        data: "weekPattern.name"
+                    },
+                    {
+                        data: "weekActive",
+                        render: function (data) {
+                            return (data) ? "En Progreso" : "Terminada";
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-week-id='" + data + "'>Borrar</button>";
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}
