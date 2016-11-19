@@ -4,7 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Title</h2>
+@{
+    if (Model.WeekValues.Id != 0)
+    {
+        <h2>@Model.Title <button class="btn btn-link js-finish-week" week-id="@Model.Week.Id">Terminar Semana</button></h2>
+    }
+    else
+    {
+        <h2>@Model.Title</h2>
+    }
+}
 
 <h3>Resumen de la semana</h3>
 

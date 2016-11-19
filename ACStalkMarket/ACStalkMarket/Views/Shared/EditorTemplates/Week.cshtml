@@ -53,7 +53,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        @Html.LabelFor(m => m.WeekActive) <button class="btn btn-link js-finish-week" week-id="@Model.Id">Terminar Semana</button>
+        @Html.LabelFor(m => m.WeekActive)
         @Html.DropDownListFor(m => m.WeekActive, new[] { new SelectListItem { Text = "Terminada", Value = "False" }, new SelectListItem { Text = "En Progreso", Value = "True", Selected = true } }, new { @readonly = "readonly", @class = "form-control" })
     </div>
     <div class="col-md-4">
