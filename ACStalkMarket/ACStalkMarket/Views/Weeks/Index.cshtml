@@ -7,21 +7,29 @@
 
 <h2>Resumen de Semanas</h2>
 
-@Html.ActionLink("Nueva Semana", "New", "Weeks", new { @class = "btn btn-primary" })
+<div class="row">
+    <div class="col-md-12">
+        @Html.ActionLink("Nueva Semana", "New", "Weeks", new { @class = "btn btn-primary" })
+    </div>
+</div>
 
-<table id="weeks" class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Fecha de Inicio</th>
-            <th>Fecha de Venta</th>
-            <th>Patrón</th>
-            <th>Estado</th>
-            <th>Eliminar</th>
-        </tr>
-    </thead>
+<div class="row">
+    <div class="col-md-12">
+        <table id="weeks" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Venta</th>
+                    <th>Patrón</th>
+                    <th>Estado</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
 
-    <tbody></tbody>
-</table>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
 
 <input type="hidden" id="people-id" data-people-id="@User.Identity.GetPeopleId()">
 
