@@ -18,7 +18,7 @@ namespace ACStalkMarket.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Animal Crossing Stalk Market Calculator.";
 
             return View();
         }
