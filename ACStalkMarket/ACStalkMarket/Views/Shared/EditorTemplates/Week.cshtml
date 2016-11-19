@@ -1,0 +1,67 @@
+﻿@model ACStalkMarket.Models.Week
+@using ACStalkMarket.Models
+@using System.Globalization
+
+@{ 
+    var date = Model.SellingDate;
+    var weekPatterns = (IEnumerable<WeekPattern>) ViewData["weekPatterns"];
+    string shortDate = null;
+
+    if (date != null)
+    {
+        var day = date.Value.ToString("dddd");
+        var time = date.Value.ToString(" tt", CultureInfo.InvariantCulture).ToUpper();
+        shortDate = string.Concat(day, time);
+    }
+}
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.StartingDate)
+        @Html.TextBoxFor(m => m.StartingDate, "{0:yyyy-MM-dd}", new { type = "date", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.StartingDate)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.SellingDate)
+        @Html.TextBox(" ", shortDate, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.TurnipStartingPrice)
+        @Html.TextBoxFor(m => m.TurnipStartingPrice, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TurnipStartingPrice)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.TurnipSellingPrice)
+        @Html.TextBoxFor(m => m.TurnipSellingPrice, new { @readonly = "readonly", type = "number", @class = "form-control" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.BellsInvestment)
+        @Html.TextBoxFor(m => m.BellsInvestment, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BellsInvestment)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.Profit)
+        @Html.TextBoxFor(m => m.Profit, new { @readonly = "readonly", type = "number", @class = "form-control" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.WeekActive) <button class="btn btn-link js-finish-week" week-id="@Model.Id">Terminar Semana</button>
+        @Html.DropDownListFor(m => m.WeekActive, new[] { new SelectListItem { Text = "Terminada", Value = "False" }, new SelectListItem { Text = "En Progreso", Value = "True", Selected = true } }, new { @readonly = "readonly", @class = "form-control" })
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.WeekPatternId)
+        @Html.DropDownListFor(m => m.WeekPatternId, new SelectList(weekPatterns, "Id", "Name"), new { @readonly = "readonly", @class = "form-control" })
+    </div>
+</div>
+
+@Html.HiddenFor(m => m.PeopleId)
+@Html.HiddenFor(m => m.TownId)
+@Html.HiddenFor(m => m.Id)

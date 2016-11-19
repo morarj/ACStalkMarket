@@ -1,0 +1,81 @@
+﻿@model ACStalkMarket.Models.WeekValues
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.monAM)
+        @Html.TextBoxFor(m => m.monAM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.monAM)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.monPM)
+        @Html.TextBoxFor(m => m.monPM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.monPM)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.tueAM)
+        @Html.TextBoxFor(m => m.tueAM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.tueAM)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.tuePM)
+        @Html.TextBoxFor(m => m.tuePM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.tuePM)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.wedAM)
+        @Html.TextBoxFor(m => m.wedAM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.wedAM)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.wedPM)
+        @Html.TextBoxFor(m => m.wedPM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.wedPM)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.thuAM)
+        @Html.TextBoxFor(m => m.thuAM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.thuAM)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.thuPM)
+        @Html.TextBoxFor(m => m.thuPM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.thuPM)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.friAM)
+        @Html.TextBoxFor(m => m.friAM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.friAM)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.friPM)
+        @Html.TextBoxFor(m => m.friPM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.friPM)
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.satAM)
+        @Html.TextBoxFor(m => m.satAM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.satAM)
+    </div>
+    <div class="col-md-4">
+        @Html.LabelFor(m => m.satPM)
+        @Html.TextBoxFor(m => m.satPM, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.satPM)
+    </div>
+</div>
+
+@Html.HiddenFor(m => m.Id)
