@@ -13,23 +13,6 @@ namespace ACStalkMarket.ViewModels
     {
         public IEnumerable<WeekPattern> WeekPatterns { get; set; }
 
-        public string SellingDateShort
-        {
-            get
-            {
-                var date = Week.SellingDate;
-
-                if(date != null)
-                {
-                    var day = date.Value.ToString("dddd");
-                    var time = date.Value.ToString(" tt", CultureInfo.InvariantCulture).ToUpper();
-                    return string.Concat(day, time);
-                }
-
-                return null;
-            }
-        }
-
         public WeekValues WeekValues { get; set; }
 
         public Week Week { get; set; }
