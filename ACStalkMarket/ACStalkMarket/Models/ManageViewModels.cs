@@ -14,27 +14,9 @@ namespace ACStalkMarket.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
 
-        // Custom
-        //[Required]
-        //public int PeopleId { get; set; }
-
         public People Person { get; set; }
 
         public IEnumerable<Gender> Genders { get; set; }
-
-        /*
-        [Required]
-        [StringLength(255)]
-        [Display(Name = "Nombre")]
-        [RegularExpression("^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", ErrorMessage = "Nombre no válido.")]
-        public string Name { get; set; }
-
-        [DataType(DataType.Date)]
-        [Display(Name = "Fecha de Nacimiento")]
-        public DateTime? BirthDate { get; set; }
-
-        [Display(Name = "Género")]
-        public short GenderId { get; set; } */
 
         [Required]
         [StringLength(10)]

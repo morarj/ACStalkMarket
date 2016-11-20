@@ -54,8 +54,12 @@
                     {
                         data: "sellingDate",
                         render: function (data) {
+                            if (data == null)
+                                return " ";
+
                             var date = new Date(data);
-                            return date.getUTCDate() + "/" + date.getUTCMonth() + "/" + date.getUTCFullYear();
+                            var amPm = (date.getUTCHours() >= 12) ? "PM" : "AM";
+                            return date.getUTCDate() + "/" + date.getUTCMonth() + "/" + date.getUTCFullYear() + " " + amPm;
                         }
                     },
                     {
