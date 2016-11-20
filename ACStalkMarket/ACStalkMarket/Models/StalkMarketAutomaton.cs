@@ -61,14 +61,17 @@ namespace ACStalkMarket.Models
                 retailPrice > BuyingPrice ||
                 retailPrice == 0) ? StalkMarketPatterns.Random : StalkMarketPatterns.Decreasing;
 
-            Date = Date.AddHours(12);
-
             switch (caseSwitch)
             {
                 case StalkMarketPatterns.Decreasing:
                     Pattern = StalkMarketPatterns.Decreasing;
                     return State(StalkMarketPatterns.Decreasing);
                 case StalkMarketPatterns.Random:
+                    if (retailPrice >= 110 && retailPrice >= BuyingPrice)
+                    {
+                        SellingDate = Date;
+                        SellingPrice = retailPrice;
+                    }
                     Pattern = StalkMarketPatterns.Random;
                     return State(StalkMarketPatterns.Random);
             }
@@ -79,9 +82,13 @@ namespace ACStalkMarket.Models
         // State
         private byte State(byte previousPattern)
         {
+            Date = Date.AddHours(12);
+
             // If its Saturday afternoon exit
             if (Date.AddHours(12).DayOfWeek == DayOfWeek.Sunday)
                 return 0;
+
+            var caseSwitch = GetNextStep(previousPattern);
 
             // Get the next retail price
             var retailNextPrice = GetRetailPrice(Date.AddHours(+12));
@@ -89,9 +96,6 @@ namespace ACStalkMarket.Models
             // If the next retail price if 0 thn exit
             if (retailNextPrice == 0)
                 return 0;
-
-            var caseSwitch = GetNextStep(previousPattern);
-            Date = Date.AddHours(12);
 
             switch (caseSwitch)
             {
