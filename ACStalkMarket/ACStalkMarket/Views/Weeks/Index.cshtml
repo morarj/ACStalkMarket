@@ -47,7 +47,7 @@
                         data: "startingDate",
                         render: function (data, type, week) {
                             var date = new Date(week.startingDate);
-                            var shortDate =  date.getUTCDate() + "/" + date.getUTCMonth() + "/" + date.getUTCFullYear();
+                            var shortDate =  date.getUTCDate() + "/" + (date.getUTCMonth() + 1) + "/" + date.getUTCFullYear();
                             return "<a href='/weeks/edit/" + week.id + "'>" + shortDate + "</a>";
                         }
                     },
@@ -59,7 +59,7 @@
 
                             var date = new Date(data);
                             var amPm = (date.getUTCHours() >= 12) ? "PM" : "AM";
-                            return date.getUTCDate() + "/" + date.getUTCMonth() + "/" + date.getUTCFullYear() + " " + amPm;
+                            return date.getUTCDate() + "/" + (date.getUTCMonth() + 1) + "/" + date.getUTCFullYear() + " " + amPm;
                         }
                     },
                     {
